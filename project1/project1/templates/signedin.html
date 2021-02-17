@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+{% block sidecontent %}
+
+<div class="detailBox">
+  <div class="titleBox">
+    <label><strong>Forum</strong></label>
+  </div>
+  <div class="commentBox">
+      <p class="taskDescription">Type a comment for others to see.</p>
+  </div>
+  <div class="actionBox">
+            {% for i in comments %}
+              <div>
+                Author: {{ i.name }}
+                <br>
+
+              </div>
+              <div class="commentText">
+                  <p class="">{{ i.body }}</p>
+                <hr>
+              </div>
+            {% endfor %}
+  </div>
+</div>
+
+
+
+
+<form action = "{{url_for('gen_comments')}}" method = "post">
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Enter your comment</label>
+      <textarea class="form-control" name="comment" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+
+{% endblock %}
+
+{% block rightHeader %}
+{% endblock %}
